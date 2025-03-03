@@ -3,6 +3,14 @@ Tanzania, as a developing country, struggles with providing clean water to its p
 
 Build a classifier to predict the condition of a water well, using information about the sort of pump, when it was installed, etc. Your audience could be an NGO focused on locating wells needing repair, or the Government of Tanzania looking to find patterns in non-functional wells to influence how new wells are built. Note that this is a ternary classification problem by default, but can be engineered to be binary.
 
+Resources to look at:
+
+Developing End to End DS project: https://www.kdnuggets.com/developing-end-to-end-data-science-pipelines-with-data-ingestion-processing-and-visualization
+
+Discussion board for Tanzanian waterwells: https://community.drivendata.org/c/pump-it-up-data-mining-the-water-table/11
+
+ML Classification End to End: https://medium.com/codenx/machine-learning-classification-problem-end-to-end-example-using-scikit-learn-pandas-numpy-and-ea47104eddd5
+
 The features in this dataset:
 
 amount_tsh - Total static head (amount water available to waterpoint)
