@@ -1,92 +1,66 @@
-# Tanzanian-Waterwells
-Tanzania, as a developing country, struggles with providing clean water to its population of over 57,000,000. There are many water points already established in the country, but some are in need of repair while others have failed altogether.
+# Tanzanian Waterwells Project
 
-Build a classifier to predict the condition of a water well, using information about the sort of pump, when it was installed, etc. Your audience could be an NGO focused on locating wells needing repair, or the Government of Tanzania looking to find patterns in non-functional wells to influence how new wells are built. Note that this is a ternary classification problem by default, but can be engineered to be binary.
+## Overview  
+The **Tanzanian Waterwells Project** is an initiative aimed at predicting water pump functionality to ensure clean water access for the people of Tanzania. This project utilizes **machine learning (ML)** techniques to classify water wells as **functional, non-functional, or in need of repair**. By leveraging data analysis and model optimization, our goal is to provide the people of Tanzania a ML model that can make accurate predictions on water pumps that are functional and produce clean water.
 
-Resources to look at:
+## Team  
+- **Shefat Moral**  
+- **Gabriel Santorelli**  
+- **David Jimenez**  
 
-Developing End to End DS project: https://www.kdnuggets.com/developing-end-to-end-data-science-pipelines-with-data-ingestion-processing-and-visualization
+## Project Goals  
+- Our goal for this project was to build an effective ML model that can predict water pump functionality for the purpose of bringing clean water to the people of Tanzania 🇹🇿.   
 
-Discussion board for Tanzanian waterwells: https://community.drivendata.org/c/pump-it-up-data-mining-the-water-table/11
+---
 
-ML Classification End to End: https://medium.com/codenx/machine-learning-classification-problem-end-to-end-example-using-scikit-learn-pandas-numpy-and-ea47104eddd5
+## Data Exploration (EDA)  
+### Key Findings:  
+- The dataset contained **three well statuses**:  
+  - **Functional**  
+  - **Non-Functional**  
+  - **Functional Needs Repair**  
+- **Functionality by Region:** Analyzed geographic patterns of well status.  
+- **Water Quality Analysis:** Functioning wells did not always provide clean water.  
+  - Categories like **Unknown, Fluoride Abandoned, and Salty** were among the lowest quality.  
 
-The features in this dataset:
+---
 
-amount_tsh - Total static head (amount water available to waterpoint)
+## Model Development  
+### **Baseline Model: Decision Tree**  
+- Initial accuracy: **75%**  
+- Strengths: Identified **Class 0 (Functional)** and **Class 2 (Non-Functional)** well.  
+- Weakness: Struggled with **Class 1 (Needs Repair)**.
+- Class Balancing: Addressed class imbalance with **class_weight** and **SMOTE (Synthetic Minority Over-sampling Technique)**. 
 
-date_recorded - The date the row was entered
+### **Improved Model: Random Forest**  
+- Initial accuracy: **79%**  
+- Improved precision for **Class 1 (60%)** and **Class 2 (84%)**.  
+- Struggled to distinguish **Class 1 from Class 2**.
+- Further EDA to determine the next steps in optimization.
 
-funder - Who funded the well
+### **Feature Engineering & Model Optimization**  
+- **Correlating Features:** Engineered features based on relationships (e.g., **gps_height, function_years**).  
+- **Hyperparameter Tuning:** Adjusted parameters for better classification performance.
+- **Error Analysis:** looked into the features that were potentially causing false positives.
+ 
 
-gps_height - Altitude of the well
+### **Final Model Performance**  
+- **Optimized Random Forest Model**  
+  - **Error Analysis:** Pumps that needed repair weren't producing good water. Grouped Needs Repair with Not functional.
+  - **Accuracy:** up to **81%**, that's a 6% increase from our baseline model(75%).
+  - **Precision:** up to **.82**, that's a 36% increase from our baseline model(.46).
+  - **Recall:** up to **.74**, that's a 42% increase from our baseline model(.32).
+  - **F1-Score:** up to **.78**, that's a 40% increase from our baseline model(.38).
+  - **Reduced false positives by 200 cases.**
+  - **Mean CV Accuracy:** .793, indicating there is no overfitting or data leakage.
+  - **Standard deviation:** of **0.0025**, indicating model stability.
+  
 
-installer - Organization that installed the well
+---
 
-longitude - GPS coordinate
+## Future Improvements  
+- **Continue Error Analysis:** Keep exploring features that are causing false positives.
+- **Explore additional models:** Like SVM, Gradient Boosting, etc., to enhance the accuracy of the model further.
 
-latitude - GPS coordinate
-
-wpt_name - Name of the waterpoint if there is one
-
-num_private -
-
-basin - Geographic water basin
-
-subvillage - Geographic location
-
-region - Geographic location
-
-region_code - Geographic location (coded)
-
-district_code - Geographic location (coded)
-
-lga - Geographic location
-
-ward - Geographic location
-
-population - Population around the well
-
-public_meeting - True/False
-
-recorded_by - Group entering this row of data
-
-scheme_management - Who operates the waterpoint
-
-scheme_name - Who operates the waterpoint
-
-permit - If the waterpoint is permitted
-
-construction_year - Year the waterpoint was constructed
-
-extraction_type - The kind of extraction the waterpoint uses
-
-extraction_type_group - The kind of extraction the waterpoint uses
-
-extraction_type_class - The kind of extraction the waterpoint uses
-
-management - How the waterpoint is managed
-
-management_group - How the waterpoint is managed
-
-payment - What the water costs
-
-payment_type - What the water costs
-
-water_quality - The quality of the water
-
-quality_group - The quality of the water
-
-quantity - The quantity of water
-
-quantity_group - The quantity of water
-
-source - The source of the water
-
-source_type - The source of the water
-
-source_class - The source of the water
-
-waterpoint_type - The kind of waterpoint
-
-waterpoint_type_group - The kind of waterpoint
+### **Acknowledgments**
+- We appreciate the Tanzanian government and local organizations for bringing clean water to communities. Special thanks to our fellow peers and instructor for their guidance throughout this project.
